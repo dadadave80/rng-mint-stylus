@@ -111,8 +111,9 @@ impl LotteryToken {
     }
 
     fn _mint_random_amount(&mut self, nonce: U256, rng_list: Vec<U256>) -> Result<(), Error> {
+        let sender = self.vm().msg_sender();
         // If the caller is not the Supra router, return an error
-        if self.vm().msg_sender() != self.supra_router.get() {
+        if sender != self.supra_router.get() {
             return Err(Error::OnlySupraRouter(OnlySupraRouter {}));
         }
 
