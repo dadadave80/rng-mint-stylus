@@ -119,7 +119,7 @@ impl LotteryToken {
         let receiver = self.mint_address.get(nonce);
         let random_num = rng_list[0];
         // Mint between 1 and 1,000 tokens
-        let mint_range = U256::from(1000 * 10_u16.pow(18));
+        let mint_range = U256::from(1000000000000000000000_u128);
         let mint_amount = (random_num % mint_range) + U256::from(1);
 
         let rng_token = IErc20::from(self.rng_token.get());
